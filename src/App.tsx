@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 
 const ROWS = 4;
@@ -39,8 +39,25 @@ const getRandomBoard = (): number[] => {
   return tiles;
 };
 
+const isSolved = (board: number[]) => {
+  for (let i = 0; i < board.length; i++) {
+    if (board[i] !== i + 1) {
+      return false;
+    }
+  }
+  return true;
+};
+
 function App() {
   const [board, setBoard] = useState(getRandomBoard());
+
+  useEffect(() => {
+    if (isSolved(board)) {
+      setTimeout(() => {
+        alert("Congrats, you finished the puzzel!");
+      }, 100);
+    }
+  }, [board]);
 
   const handleTileClick = (index: number) => {
     const emptyIndex = board.indexOf(ROWS * COLUMNS);
