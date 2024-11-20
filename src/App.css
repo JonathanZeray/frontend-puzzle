@@ -31,11 +31,18 @@ body {
   font-weight: bold;
   min-width: 2.5rem;
   cursor: pointer;
+  background-color: #add8e6;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.tile:hover {
+  transform: scale(1.05);
 }
 
 .empty-tile {
   border: none;
   cursor: default;
+  background-color: transparent;
 }
 
 .reshuffle-btn {
@@ -86,10 +93,18 @@ body {
 
 .success-toast_btn {
   padding: 0.25rem 0.75rem;
-  font-size: 0.8rem;
-  background-color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #000;
+  background-color: #add8e6;
+  border: none;
   border-radius: 0.5rem;
   cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.success-toast_btn:hover {
+  transform: scale(1.05);
 }
 
 @media screen and (min-width: 640px) {
