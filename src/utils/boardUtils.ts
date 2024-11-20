@@ -21,7 +21,7 @@ export const getRandomBoard = (): number[] => {
   let emptyIndex = totalTiles - 1;
 
   //Ändra det andra uttrycket (i < "X") till ett lägre/högre värde. Ju lägre värde desto lättare pussel.
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 30; i++) {
     const possibleMoves = getValidMoves(emptyIndex);
     const randomMove =
       possibleMoves[Math.floor(Math.random() * possibleMoves.length)];
