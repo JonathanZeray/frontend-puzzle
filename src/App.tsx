@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 
-const ROWS = 4;
-const COLUMNS = 4;
+const ROWS = 3;
+const COLUMNS = 5;
 
 const getValidMoves = (emptyIndex: number): number[] => {
   const validMoves: number[] = [];
