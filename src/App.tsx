@@ -1,49 +1,12 @@
 import { useEffect, useState } from "react";
+import {
+  getValidMoves,
+  getRandomBoard,
+  isSolved,
+  ROWS,
+  COLUMNS,
+} from "./utils/boardUtils";
 import "./App.css";
-
-const ROWS = 3;
-const COLUMNS = 5;
-
-const getValidMoves = (emptyIndex: number): number[] => {
-  const validMoves: number[] = [];
-  const row = Math.floor(emptyIndex / COLUMNS);
-  const col = emptyIndex % COLUMNS;
-
-  if (col > 0) validMoves.push(emptyIndex - 1); // left
-  if (col < COLUMNS - 1) validMoves.push(emptyIndex + 1); // right
-  if (row > 0) validMoves.push(emptyIndex - COLUMNS); // up
-  if (row < ROWS - 1) validMoves.push(emptyIndex + COLUMNS); // down
-
-  return validMoves;
-};
-
-const getRandomBoard = (): number[] => {
-  const totalTiles = ROWS * COLUMNS;
-  const tiles: number[] = Array.from({ length: totalTiles }, (_, i) => i + 1);
-  let emptyIndex = totalTiles - 1;
-
-  //change i < 10 below to a lower/higher value to get an easier or harder shuffle.
-  for (let i = 0; i < 20; i++) {
-    const possibleMoves = getValidMoves(emptyIndex);
-    const randomMove =
-      possibleMoves[Math.floor(Math.random() * possibleMoves.length)];
-    [tiles[emptyIndex], tiles[randomMove]] = [
-      tiles[randomMove],
-      tiles[emptyIndex],
-    ];
-    emptyIndex = randomMove;
-  }
-  return tiles;
-};
-
-const isSolved = (board: number[]) => {
-  for (let i = 0; i < board.length; i++) {
-    if (board[i] !== i + 1) {
-      return false;
-    }
-  }
-  return true;
-};
 
 function App() {
   const [board, setBoard] = useState<number[]>(getRandomBoard());

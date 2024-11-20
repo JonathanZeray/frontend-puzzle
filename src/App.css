@@ -78,7 +78,7 @@ body {
   background-color: #353935;
   opacity: 0;
   color: white;
-  font-size: 1.75rem;
+  font-size: 1.25rem;
   font-weight: bold;
   text-align: center;
   animation: slideIn 0.5s ease forwards;
@@ -86,7 +86,7 @@ body {
 
 .success-toast_btn {
   padding: 0.25rem 0.75rem;
-  font-size: 1.25rem;
+  font-size: 0.8rem;
   background-color: #fff;
   border-radius: 0.5rem;
   cursor: pointer;
@@ -100,5 +100,10 @@ body {
 
   .success-toast {
     width: 40%;
+    font-size: 1.75rem;
+  }
+
+  .success-toast_btn {
+    font-size: 1.25rem;
   }
 }
