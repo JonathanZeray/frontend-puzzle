@@ -13,6 +13,7 @@ body {
   gap: 3rem;
   justify-content: center;
   align-items: center;
+  background-color: #f0f0f0;
 }
 
 .tile-grid {
@@ -31,10 +32,27 @@ body {
   font-size: 1.2rem;
   font-weight: bold;
   min-width: 3.5rem;
+  cursor: pointer;
 }
 
 .empty-tile {
-  background-color: darkgrey;
+  border: none;
+  cursor: default;
+}
+
+.reshuffle-btn {
+  background-color: #fff;
+  color: #000;
+  font-weight: bold;
+  border: 1px solid black;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: 0.4s ease-in-out;
+}
+.reshuffle-btn:hover {
+  background-color: #000;
+  color: #fff;
 }
 
 @media screen and (min-width: 640px) {

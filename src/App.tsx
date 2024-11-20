@@ -24,6 +24,7 @@ const getRandomBoard = (): number[] => {
   console.log("Initial Board:", tiles);
   console.log("Empty index", emptyIndex);
 
+  //change i < 10 below to a lower/higher value to get an easier or harder shuffle.
   for (let i = 0; i < 10; i++) {
     const possibleMoves = getValidMoves(emptyIndex);
     const randomMove =
