@@ -61,14 +61,20 @@ function App() {
   return (
     <>
       <div className="container">
-        <div className="tile-grid">
+        <div
+          className="tile-grid"
+          style={{
+            gridTemplateColumns: `repeat(${COLUMNS}, 1fr)`,
+            gridTemplateRows: `repeat(${ROWS}, 1fr)`,
+          }}
+        >
           {board.map((tile, index) => (
             <div
               key={tile}
-              className={`tile ${tile === 16 ? "empty-tile" : ""}`}
+              className={`tile ${tile === ROWS * COLUMNS ? "empty-tile" : ""}`}
               onClick={() => handleTileClick(index)}
             >
-              {tile !== 16 && tile}
+              {tile !== ROWS * COLUMNS && tile}
             </div>
           ))}
         </div>
