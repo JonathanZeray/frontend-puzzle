@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 
-const ROWS = 3;
-const COLUMNS = 5;
+const ROWS = 2;
+const COLUMNS = 2;
 
 const getValidMoves = (emptyIndex: number): number[] => {
   const validMoves: number[] = [];
@@ -21,8 +21,6 @@ const getRandomBoard = (): number[] => {
   const totalTiles = ROWS * COLUMNS;
   const tiles: number[] = Array.from({ length: totalTiles }, (_, i) => i + 1);
   let emptyIndex = totalTiles - 1;
-  console.log("Initial Board:", tiles);
-  console.log("Empty index", emptyIndex);
 
   //change i < 10 below to a lower/higher value to get an easier or harder shuffle.
   for (let i = 0; i < 10; i++) {
@@ -34,9 +32,7 @@ const getRandomBoard = (): number[] => {
       tiles[emptyIndex],
     ];
     emptyIndex = randomMove;
-    console.log("empty index shuffle: ", emptyIndex);
   }
-
   return tiles;
 };
 
@@ -51,11 +47,12 @@ const isSolved = (board: number[]) => {
 
 function App() {
   const [board, setBoard] = useState<number[]>(getRandomBoard());
+  const [solved, setSolved] = useState<boolean>(false);
 
   useEffect(() => {
     if (isSolved(board)) {
       setTimeout(() => {
-        alert("Congrats, you finished the puzzel!");
+        setSolved(true);
       }, 100);
     }
   }, [board]);
@@ -63,8 +60,6 @@ function App() {
   const handleTileClick = (index: number) => {
     const emptyIndex = board.indexOf(ROWS * COLUMNS);
     const validMoves = getValidMoves(emptyIndex);
-    console.log("EMPTY", emptyIndex);
-    console.log("Possible moves: ", validMoves);
 
     if (validMoves.includes(index)) {
       const newBoard = [...board];
@@ -102,6 +97,20 @@ function App() {
         >
           Reshuffle
         </button>
+        {solved && (
+          <div className={`success-toast ${solved ? "visible" : ""}`}>
+            Congratulations!
+            <button
+              onClick={() => {
+                setBoard(getRandomBoard());
+                setSolved(!solved);
+              }}
+              className="success-toast_btn"
+            >
+              Play again
+            </button>
+          </div>
+        )}
       </div>
     </>
   );
