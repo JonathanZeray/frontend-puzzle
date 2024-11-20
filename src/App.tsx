@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 
-const ROWS = 2;
-const COLUMNS = 2;
+const ROWS = 3;
+const COLUMNS = 5;
 
 const getValidMoves = (emptyIndex: number): number[] => {
   const validMoves: number[] = [];
@@ -23,7 +23,7 @@ const getRandomBoard = (): number[] => {
   let emptyIndex = totalTiles - 1;
 
   //change i < 10 below to a lower/higher value to get an easier or harder shuffle.
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 20; i++) {
     const possibleMoves = getValidMoves(emptyIndex);
     const randomMove =
       possibleMoves[Math.floor(Math.random() * possibleMoves.length)];
@@ -100,6 +100,8 @@ function App() {
         {solved && (
           <div className={`success-toast ${solved ? "visible" : ""}`}>
             Congratulations!
+            <br />
+            You did it!
             <button
               onClick={() => {
                 setBoard(getRandomBoard());
