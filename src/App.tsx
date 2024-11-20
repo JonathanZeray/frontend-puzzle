@@ -54,6 +54,12 @@ function App() {
             </div>
           ))}
         </div>
+        <button
+          className="reshuffle-btn"
+          onClick={() => setBoard(getRandomBoard())}
+        >
+          Reshuffle
+        </button>
       </div>
     </>
   );
