@@ -19,7 +19,7 @@ const getValidMoves = (emptyIndex: number): number[] => {
 
 const getRandomBoard = (): number[] => {
   const totalTiles = ROWS * COLUMNS;
-  const tiles = Array.from({ length: totalTiles }, (_, i) => i + 1);
+  const tiles: number[] = Array.from({ length: totalTiles }, (_, i) => i + 1);
   let emptyIndex = totalTiles - 1;
   console.log("Initial Board:", tiles);
   console.log("Empty index", emptyIndex);
@@ -50,7 +50,7 @@ const isSolved = (board: number[]) => {
 };
 
 function App() {
-  const [board, setBoard] = useState(getRandomBoard());
+  const [board, setBoard] = useState<number[]>(getRandomBoard());
 
   useEffect(() => {
     if (isSolved(board)) {
